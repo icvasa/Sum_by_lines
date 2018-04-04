@@ -1,25 +1,51 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
+    static  int N = 3;
 
     public static void main(String[] args) {
+        Map<Integer, ArrayList> row1 = new HashMap<Integer, ArrayList>();
+        ArrayList<Integer> r1 = new ArrayList<Integer>(N);
+        Map<Integer, ArrayList> row2 = new HashMap<Integer, ArrayList>();
+        ArrayList<Integer> r2 = new ArrayList<Integer>(N);
+        Map<Integer, ArrayList> row3 = new HashMap<Integer, ArrayList>();
+        ArrayList<Integer> r3 = new ArrayList<Integer>(N);
 
-        int N = 3;
         int[][] arr = new int[N][N];
         generate_matrix(arr);
         display(arr);
-        System.out.println("The determinant equals" + determinant(arr, N));
+        int sum;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum = 0;
+            for (int j = 0; j < arr[i].length; j++) {
+
+                System.out.print(arr[i][j] + " ");
+
+
+                sum += arr[i][j];
+
+
+            }
+            System.out.print("= " + sum+"\n");
+
+        }
+
+
+        /*for (int i = 0; i < arr.length; i++) {
+            Map<Integer,ArrayList>  de = new Map<Integer, ArrayList>;
+        }
+
+
     }
+*/
 
-    public static int sum (int n){
-        int sum=0;
-        for (int i=0; i<n;i++){
-
-         }
 
     }
-
-
 
     public static void generate_matrix(int arr[][]) {
         for (int i = 0; i < arr.length; i++) {
