@@ -8,44 +8,53 @@ public class Main {
     static  int N = 3;
 
     public static void main(String[] args) {
-        Map<Integer, ArrayList> row1 = new HashMap<Integer, ArrayList>();
+      /*  Map<Integer, ArrayList> map = new HashMap<Integer, ArrayList>();
         ArrayList<Integer> r1 = new ArrayList<Integer>(N);
-        Map<Integer, ArrayList> row2 = new HashMap<Integer, ArrayList>();
         ArrayList<Integer> r2 = new ArrayList<Integer>(N);
-        Map<Integer, ArrayList> row3 = new HashMap<Integer, ArrayList>();
         ArrayList<Integer> r3 = new ArrayList<Integer>(N);
-
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+*/
         int[][] arr = new int[N][N];
         generate_matrix(arr);
         display(arr);
-        int sum;
+        System.out.println();
+        System.out.println("The sorted array by rows");
 
-        for (int i = 0; i < arr.length; i++) {
-            sum = 0;
-            for (int j = 0; j < arr[i].length; j++) {
+        int sum1, sum2;
+        int t;
+        int B = 1;
 
-                System.out.print(arr[i][j] + " ");
+        do {
+            B = 0;
+            for (int i = 0; i < N - 1; i++) {
+                sum1 = sum2 = 0;
 
+                for (int j = 0; j < N; j++) {
+                    sum1 += arr[i][j];
+                    sum2 += arr[i + 1][j];
+                }
 
-                sum += arr[i][j];
-
-
+                if (sum1 > sum2) {
+                    B++;
+                    for (int j = 0; j < N; j++) {
+                        t = arr[i][j];
+                        arr[i][j] = arr[i + 1][j];
+                        arr[i + 1][j] = t;
+                    }
+                }
             }
-            System.out.print("= " + sum+"\n");
-
-        }
+        } while (B != 0);
 
 
-        /*for (int i = 0; i < arr.length; i++) {
-            Map<Integer,ArrayList>  de = new Map<Integer, ArrayList>;
-        }
+        display(arr);
+
+
 
 
     }
-*/
 
 
-    }
+
 
     public static void generate_matrix(int arr[][]) {
         for (int i = 0; i < arr.length; i++) {
@@ -54,6 +63,9 @@ public class Main {
             }
         }
     }
+
+
+
 
 
     public static void display(int arr[][]) {
